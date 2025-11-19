@@ -1,0 +1,110 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+<div class="row mb-4 align-items-center">
+    <div class="col-md-6">
+        <h1 class="display-5">Clientes</h1>
+        <p class="text-muted">Gestiona tus relaciones con los clientes</p>
+    </div>
+    <div class="col-md-6 text-md-end">
+        <div class="btn-group" role="group">
+            <a href="?birthday=week" class="btn btn-outline-primary {% if request.GET.birthday == 'week' %}active{% endif %}">
+                <i class="bi bi-cake2"></i> Cumpleaños esta semana
+            </a>
+            <a href="{% url 'customer_list' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-counterclockwise"></i> Limpiar filtros
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" name="q" class="form-control" placeholder="Buscar por nombre o compañía..." value="{{ request.GET.q|default:'' }}">
+                </div>
+            </div>
+            <div class="col-md-2 d-grid">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+            
+            {% if request.GET.sort %}
+            <input type="hidden" name="sort" value="{{ request.GET.sort }}">
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-white py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Lista de Clientes</h5>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-sort-down"></i> Ordenar por
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="?sort=last_name&q={{ request.GET.q|default:'' }}">Nombre</a></li>
+                    <li><a class="dropdown-item" href="?sort=company&q={{ request.GET.q|default:'' }}">Compañía</a></li>
+                    <li><a class="dropdown-item" href="?sort=birthday&q={{ request.GET.q|default:'' }}">Cumpleaños</a></li>
+                    <li><a class="dropdown-item" href="?sort=last_interaction&q={{ request.GET.q|default:'' }}">Última Interacción</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Compañía</th>
+                    <th>Cumpleaños</th>
+                    <th>Última Interacción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>
+                        <div class="fw-bold">{{ customer.first_name }} {{ customer.last_name }}</div>
+                    </td>
+                    <td>
+                        <span class="badge bg-light text-dark border">
+                            <i class="bi bi-building"></i> {{ customer.company.name }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-calendar-event me-2 text-muted"></i>
+                            {{ customer.birthday|date:"d b" }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if customer.last_interaction_date %}
+                            <span class="badge bg-success bg-opacity-10 text-success mb-1">
+                                {{ customer.last_interaction_type }}
+                            </span>
+                            <div class="small text-muted">
+                                hace {{ customer.last_interaction_date|timesince }}
+                            </div>
+                        {% else %}
+                            <span class="text-muted small">Sin interacciones</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center py-5 text-muted">
+                        <i class="bi bi-inbox display-4 d-block mb-3"></i>
+                        No se encontraron clientes.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

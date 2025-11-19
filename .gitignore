@@ -1,0 +1,43 @@
+# Python/Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.log
+*.pot
+*.pyc
+
+# Django specific
+/db.sqlite3
+/media/
+/staticfiles/
+/static/
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+.env*/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# pytest / coverage
+.coverage*
+htmlcov/
+.pytest_cache/
+
+# Migrations cache
+**/migrations/__pycache__/
+
+# Local settings overrides
+local_settings.py
+

@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: crm_app\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-19 00:00+0000\n"
+"PO-Revision-Date: 2025-11-19 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_PE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "created at"
+msgstr "creado el"
+
+msgid "updated at"
+msgstr "actualizado el"
+
+msgid "email address"
+msgstr "dirección de correo electrónico"
+
+msgid "user"
+msgstr "usuario"
+
+msgid "users"
+msgstr "usuarios"
+
+msgid "name"
+msgstr "nombre"
+
+msgid "company"
+msgstr "compañía"
+
+msgid "companies"
+msgstr "compañías"
+
+msgid "first name"
+msgstr "nombre"
+
+msgid "last name"
+msgstr "apellidos"
+
+msgid "birthday"
+msgstr "fecha de nacimiento"
+
+msgid "representative"
+msgstr "representante"
+
+msgid "customer"
+msgstr "cliente"
+
+msgid "customers"
+msgstr "clientes"
+
+msgid "Call"
+msgstr "Llamada"
+
+msgid "Email"
+msgstr "Correo electrónico"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "interaction type"
+msgstr "tipo de interacción"
+
+msgid "date"
+msgstr "fecha"
+
+msgid "interaction"
+msgstr "interacción"
+
+msgid "interactions"
+msgstr "interacciones"
